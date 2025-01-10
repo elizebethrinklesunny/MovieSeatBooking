@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './style.css';
+import { Button, Modal } from 'react-bootstrap';
+import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom';
 
 function Seatbooking() {
   const rows = 6;
@@ -13,6 +16,7 @@ function Seatbooking() {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [totalCost, setTotalCost] = useState(0);
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
 
   const generateSeats = () => {
     const seats = [];
@@ -43,9 +47,10 @@ function Seatbooking() {
     }
   };
 
-  const handleConfirmBooking = () => {
-    setShowModal(false);
-    alert('Booking Confirmed!');
+  const handleconfirm = () => {
+    setShowModal(false)
+    toast.success('Booking Ticket Confirmed!')
+    navigate('/');
   };
 console.log("selectedSeats",selectedSeats)
 console.log("showModal",showModal)
@@ -131,7 +136,7 @@ console.log("showModal",showModal)
         </div>
       </div>
 
-      <div className="summary mt-4">
+      <div className="summary mt-4 ">
         <button
           className="btn btn-primary"
           disabled={selectedSeats.length === 0}
@@ -149,20 +154,60 @@ console.log("showModal",showModal)
       </div>
 
       {/* Modal */}
-      {showModal && (
-        <div className="modal-overlay">
-          <div className="modal">
-            <h4>Booking Summary</h4>
-            <p><strong>Selected Seats:</strong> {selectedSeats.join(', ') || 'None'}</p>
-            <p><strong>Total Cost:</strong> ₹{totalCost}</p>
-            <div className="d-flex justify-content-between mt-4">
-              <button className="btn btn-secondary" onClick={() => setShowModal(false)}>Cancel</button>
-              <button className="btn btn-success" onClick={handleConfirmBooking}>Confirm</button>
-            </div>
+      
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+  <Modal.Header closeButton>
+    <Modal.Title>Booking Summary</Modal.Title>
+  </Modal.Header>
+  <Modal.Body>
+    <div className="booking-summary">
+      {Object.keys(seatPricing).map((tier) => {
+        // Filter seats belonging to the current tier
+        const seatsInTier = selectedSeats
+          .map((seatId) => seats.find((s) => s.id === seatId)) // Find full seat details
+          .filter((seat) => seat && seat.tier === tier); // Filter by tier
+
+        if (seatsInTier.length === 0) return null;
+
+        return (
+          
+          <div key={tier} className="tier-summary mb-3 d-flex justify-content-between">
+            <p>
+              <strong>{tier.toUpperCase()} - {seatsInTier.map((seat) => seat.id).join(", ")} ({seatsInTier.length} Tickets)</strong>
+            </p>
+            <p>₹{seatsInTier.length * seatPricing[tier]}</p>
           </div>
-        </div>
-      )}
+        );
+      })}
+      <div className="fees-summary mt-3">
+        <p className="d-flex justify-content-between">
+          <span>Convenience Fees</span>
+          <span>₹47.20</span>
+        </p>
+      </div>
+      <hr />
+      <div className="subtotal d-flex justify-content-between">
+        <strong>Sub Total</strong>
+        <strong>₹{totalCost + 47.2}</strong>
+      </div>
+     
+      
+      
+     
     </div>
+  </Modal.Body>
+  <Modal.Footer>
+    <Button variant="secondary" onClick={() => setShowModal(false)}>
+      Close
+    </Button>
+    <Button variant="primary" onClick={handleconfirm}>
+      Confirm
+    </Button>
+  </Modal.Footer>
+</Modal>
+
+    </div>
+    
   );
 }
 

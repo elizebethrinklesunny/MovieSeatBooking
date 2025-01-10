@@ -29,7 +29,7 @@ console.log("selectedMovie",selectedMovie)
           <p>
             <strong>Release Date:</strong> {selectedMovie?.releaseDate}
           </p>
-          <button className="btn btn-primary" onClick={() => navigate('/seatbooking')}>
+          <button className="btn btn-primary " onClick={() => navigate('/seatbooking')}>
            Book Now
           </button>
         </div>
