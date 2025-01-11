@@ -38,4 +38,10 @@ Utilizes React's useState  for state management.
 Optionally supports  Redux for advanced state management .
 
 
+Copy code git clone https://github.com/elizebethrinklesunny/MovieSeatBooking 
+
+Copy code npm install Run the application:
+
+Copy code npm run dev
+
 
