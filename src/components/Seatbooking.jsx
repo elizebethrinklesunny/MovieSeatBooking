@@ -63,8 +63,9 @@ console.log("showModal",showModal)
         {/* Silver Tier */}
         <div className="tier-section">
           <h5 className="text-center">Silver Seats - ₹{seatPricing.silver}</h5>
+          <div className="seat-wrap">
           {Array.from({ length: 2 }).map((_, rowIndex) => (
-            <div className="d-flex justify-content-center mb-2" key={`silver-${rowIndex}`}>
+            <div className="d-flex" key={`silver-${rowIndex}`}>
               {Array.from({ length: cols }).map((_, colIndex) => {
                 const seat = seats[rowIndex * cols + colIndex];
                 return (
@@ -83,13 +84,15 @@ console.log("showModal",showModal)
               })}
             </div>
           ))}
+          </div>
         </div>
 
         {/* Gold Tier */}
         <div className="tier-section mt-4">
           <h5 className="text-center">Gold Seats - ₹{seatPricing.gold}</h5>
+          <div className="seat-wrap">
           {Array.from({ length: 2 }).map((_, rowIndex) => (
-            <div className="d-flex justify-content-center mb-2" key={`gold-${rowIndex}`}>
+            <div className="d-flex" key={`gold-${rowIndex}`}>
               {Array.from({ length: cols }).map((_, colIndex) => {
                 const seat = seats[(rowIndex + 2) * cols + colIndex];
                 return (
@@ -108,13 +111,15 @@ console.log("showModal",showModal)
               })}
             </div>
           ))}
+          </div>
         </div>
 
         {/* Platinum Tier */}
         <div className="tier-section mt-4">
           <h5 className="text-center">Platinum Seats - ₹{seatPricing.platinum}</h5>
+          <div className="seat-wrap">
           {Array.from({ length: 2 }).map((_, rowIndex) => (
-            <div className="d-flex justify-content-center mb-2" key={`platinum-${rowIndex}`}>
+            <div className="d-flex" key={`platinum-${rowIndex}`}>
               {Array.from({ length: cols }).map((_, colIndex) => {
                 const seat = seats[(rowIndex + 4) * cols + colIndex];
                 return (
@@ -133,6 +138,7 @@ console.log("showModal",showModal)
               })}
             </div>
           ))}
+        </div>
         </div>
       </div>
 
