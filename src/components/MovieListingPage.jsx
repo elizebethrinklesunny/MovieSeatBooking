@@ -15,7 +15,7 @@ const MovieListingPage = () => {
     {
       id: 1,
       title: 'Identity',
-      description: 'A mind-bending thriller by Christopher Nolan.',
+      description: 'A sketch artist and a cop work together to unravel the identity of an elusive killer using the descriptions of his face, etched into the memory of an eye-witness to the brutal crime',
       genre: 'Action/Crime/Thriller',
       releaseDate: '2 Jan, 2025',
       img: identity,
@@ -23,7 +23,7 @@ const MovieListingPage = () => {
     {
       id: 2,
       title: 'Rekhachithram',
-      description: 'An epic science fiction sequel by James Cameron.',
+      description: 'Having recently served a suspension for gambling online while on duty, Circle Inspector Vivek Gopinath rejoins the police force and is looking to reclaim his lost honour. Awaiting him is a 40-year-old, unresolved murder mystery with a faceless victim.',
       genre: 'Crime/Drama/Suspense/Thriller',
       releaseDate: '9 Jan, 2025',
       img: Rekhachithram,
@@ -31,7 +31,7 @@ const MovieListingPage = () => {
     {
       id: 3,
       title: 'Rifle Club',
-      description: 'A gripping tale of Batman by Christopher Nolan.',
+      description: 'A historic rifle club in the Western Ghats becomes a battleground when its skilled hunters face a vengeful arms dealer and his deadly gang. With their legacy and lives at stake, the hunters must turn their expertise into a fight for survival.',
       genre: 'Action/Drama',
       releaseDate: '19 Dec, 2024',
       img: rifleclub,
